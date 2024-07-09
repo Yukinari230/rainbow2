@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Half-Circle Rainbow</title>
+    <style>
+        body {
+            font-family: Helvetica;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #87CEEB; /* Sky Blue background */
+            margin: 0;
+        }
+ 
+        .rainbow-wrapper {
+            position: relative;
+            width: 90vw;
+            height: 45vw;
+            overflow: hidden;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="rainbow-wrapper" id="rainbow"></div>
+ 
+    <script>
+        function createColorBand(color, width, height, position) {
+            const band = document.createElement("div");
+            band.style.backgroundColor = color;
+            band.style.width = width;
+            band.style.height = height;
+            band.style.position = "absolute";
+            band.style.left = position.left;
+            band.style.top = position.top;
+            band.style.borderRadius = position.borderRadius || "0";
+            return band;
+        }
+ 
+        function createHalfCircleRainbow() {
+            const rainbowColors = [
+                { color: "#FF0000", width: "90vw", height: "45vw", position: { left: "0", top: "0", borderRadius: "90vw 90vw 0 0" } },
+                { color: "#FF7F00", width: "85vw", height: "42.5vw", position: { left: "2.5vw", top: "2.5vw", borderRadius: "85vw 85vw 0 0" } },
+                { color: "#FFFF00", width: "80vw", height: "40vw", position: { left: "5vw", top: "5vw", borderRadius: "80vw 80vw 0 0" } },
+                { color: "#00FF00", width: "75vw", height: "42.5vw", position: { left: "7.5vw", top: "7.5vw", borderRadius: "75vw 75vw 0 0" } },
+                { color: "#0000FF", width: "70vw", height: "35vw", position: { left: "10vw", top: "10vw", borderRadius: "70vw 70vw 0 0" } },
+                { color: "#4B0082", width: "65vw", height: "32.5vw", position: { left: "12.5vw", top: "12.5vw", borderRadius: "65vw 65vw 0 0" } },
+                { color: "#EBB1D4", width: "60vw", height: "30vw", position: { left: "15vw", top: "15vw", borderRadius: "60vw 60vw 0 0" } }
+            ];
+ 
+            const rainbowWrapper = document.getElementById("rainbow");
+ 
+            rainbowColors.forEach(({ color, width, height, position }) => {
+                const colorBand = createColorBand(color, width, height, position);
+                rainbowWrapper.appendChild(colorBand);
+            });
+        }
+ 
+        createHalfCircleRainbow();
+    </script>
+ 
+</body>
+</html>
